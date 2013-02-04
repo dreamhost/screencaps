@@ -24,9 +24,8 @@ with closing(tempfile.NamedTemporaryFile(mode='rb', suffix='.png')) as f:
     # start interactive screen capture
     result = subprocess.call(['screencapture', '-i', f.name])
 
-    print 'Screenshot captured! Copying to DreamObjects...'
-
-    if os.path.exists(f.name):
+    if result and os.path.exists(f.name):
+        print 'Screenshot captured! Copying to DreamObjects...'
         connection = boto.connect_s3(
             aws_access_key_id=dhdo_access_key,
             aws_secret_access_key=dhdo_secret_key,
