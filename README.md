@@ -7,10 +7,15 @@ utility.  It requires the ``boto`` library:
 
     $ pip install boto
 
+OR
+
+    $ sudo easy_install boto
+
+
 The utility calls ``screencapture`` in interactive mode, the equivalent of
 ``Shift-Command-4``.  After a screen shot is taken, it is stored in a temporary
 directory, uploaded to DreamObjects, and the public DreamObjects link is copied
 to the clipboard.
 
 In addition to being a useful command-line tool, a keyboard shortcut can be
-created to call an Automator workflow service to execute it.
+created to call the included Automator workflow service to execute it.
