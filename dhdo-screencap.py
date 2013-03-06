@@ -26,10 +26,10 @@ with closing(tempfile.NamedTemporaryFile(mode='rb', suffix='.png')) as f:
     result = subprocess.call(['screencapture', '-i', f.name])
 
     if not os.path.exists(f.name):
-        sys.exit(1)
+        sys.exit()
 
     if os.stat(f.name).st_size == 0:
-        sys.exit(1)
+        sys.exit()
 
     print 'Screenshot captured! Copying to DreamObjects...'
 
@@ -47,9 +47,9 @@ with closing(tempfile.NamedTemporaryFile(mode='rb', suffix='.png')) as f:
     key.set_canned_acl('public-read')
 
     public_url = key.generate_url(0, query_auth=False, force_http=True)
+    os.system('echo "%s" | pbcopy' % public_url)
 
     print 'Screenshot available at:'
     print '\t', public_url
 
-    os.system('echo "%s" | pbcopy' % public_url)
     webbrowser.open(public_url)
